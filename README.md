@@ -1,2 +1,2 @@
-# Grabify
-Over Ambitious college Python project
+# grabify
+A Over Ambitous college Python Poject
