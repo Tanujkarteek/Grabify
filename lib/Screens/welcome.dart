@@ -6,6 +6,7 @@ import '../Models/hero_logo.dart';
 import '../Models/vectorasset.dart';
 import 'sign_up.dart';
 
+
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
 
