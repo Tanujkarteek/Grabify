@@ -40,7 +40,7 @@ class WelcomePage extends StatelessWidget {
                     onPressed: () {
                       //navigate to sign_up.dart
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => MyLogin()));
+                          MaterialPageRoute(builder: (context) => MySignUp()));
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(

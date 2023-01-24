@@ -16,7 +16,7 @@ class Grabify extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: SignIn(),
+        body: WelcomePage(),
       ),
     );
   }
