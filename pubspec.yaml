@@ -65,6 +65,7 @@ flutter:
     - assets/images/planet_slice.svg
     - assets/images/Welcome_page.svg
     - assets/images/SignUp_Page.svg
+    - assets/images/Password_Screen.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
