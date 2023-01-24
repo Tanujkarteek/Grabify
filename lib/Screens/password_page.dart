@@ -3,6 +3,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:grabify/Screens/sign_in.dart';
 import 'package:grabify/Screens/welcome.dart';
 
 import '../Models/frostedglass.dart';
@@ -242,7 +243,7 @@ class _MyPssdState extends State<MyPssd> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          WelcomePage()),
+                                                          SignIn()),
                                                 );
                                               },
                                           ),
