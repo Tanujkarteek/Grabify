@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grabify/Models/frostedglass.dart';
 import 'package:grabify/Screens/password_page.dart';
+import 'package:grabify/Screens/sign_in.dart';
 import 'package:grabify/Screens/welcome.dart';
 import '../Models/hero_logo.dart';
 import '../Models/vectorasset.dart';
@@ -72,7 +73,7 @@ class _MySignUpState extends State<MySignUp> {
                           theWidth: MediaQuery.of(context).size.width * 0.85,
                           theHeight: MediaQuery.of(context).size.height * 0.45,
                           theChild: Container(
-                            height: MediaQuery.of(context).size.height * 0.4,
+                            height: MediaQuery.of(context).size.height * 0.04,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -243,7 +244,7 @@ class _MySignUpState extends State<MySignUp> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        WelcomePage()),
+                                                        SignIn()),
                                               );
                                             },
                                         ),

@@ -1,7 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:grabify/Screens/sign_up.dart';
+import '../Models/frostedglass.dart';
 import '../Models/hero_logo.dart';
 import '../Models/vectorasset.dart';
 
@@ -19,7 +22,7 @@ class _SignInState extends State<SignIn> {
       body : Stack(
         children: [
            SvgPicture.asset(
-            signin,
+            signup,
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             fit: BoxFit.cover,
@@ -40,12 +43,19 @@ class _SignInState extends State<SignIn> {
                   child:Logo(),)
                   ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.19),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  padding:
-                  const EdgeInsets.only(left:60,right:60,top:8,bottom:8),
-                      
-                          child:TextField(
+                FrostedGlassBox(
+                  theWidth: MediaQuery.of(context).size.width * 0.85,
+                          theHeight: MediaQuery.of(context).size.height * 0.4,
+                          theChild: Container(
+                            height: MediaQuery.of(context).size.height * 0.5,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                  Container(
+                                    child:Padding(
+                                      padding:
+                                     const EdgeInsets.only(left:30,right:30,top:8,bottom:8),
+                                     child:TextField(
                             textAlign: TextAlign.center,
                             decoration: InputDecoration(
                               fillColor: Color.fromRGBO(216, 103, 4, 0.8),
@@ -55,16 +65,13 @@ class _SignInState extends State<SignIn> {
                               hintStyle: TextStyle(color: Colors.white),
                               hintText: "RollNo"),
                               ),
-                      ),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.006),
-                      
-                      Container(
-                        width: MediaQuery.of(context).size.width,
+                              )),
+                              Container(
 
                         padding: 
                         const EdgeInsets.only(
-                          left:60,
-                          right:60,
+                          left:30,
+                          right:30,
                           top:8,
                           bottom:8,
                           ),
@@ -80,34 +87,33 @@ class _SignInState extends State<SignIn> {
                               ),
                           
                           ),
-                          //SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                           Container(
-                            child:Padding(padding: const EdgeInsets.only(top:0.5,bottom:4,right:132),
-                            child:Column(children:<Widget>[
-                               TextButton(
-                            style: TextButton.styleFrom(
-                              primary: Color.fromRGBO(224, 77,1, 0),
-                              
-                              ),
-                              onPressed: (){}, 
-                              child: const Text('Forget password?')
-                              ),
-                             ]
-                             )
-                             ),
-                          
-                          ),
-                          
-                              Container(
+                            child:
+                            Padding(
+                              padding: const EdgeInsets.only(top:8,bottom:3,right:132),
+                            child:RichText(
+                                      text: TextSpan(children: <TextSpan>[
+                                        TextSpan(
+                                            style: TextStyle(
+                                                color: Color.fromARGB(255, 224, 75, 1),
+                                                fontSize: 15),
+                                            text:  ("Forget password"),
+                                        )
+                                         ]
+                                      )
+                                      )
+                                      )
+                                      ),
+                             Container(
                                 child: Padding(
-                                  padding:const EdgeInsets.only(bottom: 100),
+                                  padding:const EdgeInsets.only(bottom: 1,top:14),
                                 child:Column(
                                 //crossAxisAlignment:CrossAxisAlignment.end,
                                 children:<Widget>[
                                 ElevatedButton(onPressed: () {  },
                                 child: const Text('Sign in'),
                                 style:ElevatedButton.styleFrom(
-                                  backgroundColor: Color.fromRGBO(224, 77, 1, 0),
+                                  backgroundColor: Color.fromARGB(255, 224, 75, 1),
                                   padding:const EdgeInsets.only(left:50,
                                   right:50,top:14,bottom:15),
                                   shape: RoundedRectangleBorder(
@@ -120,13 +126,50 @@ class _SignInState extends State<SignIn> {
                                 ),
                                 ),
                                 Container(
+                                   child:Padding(
+                                    padding: const EdgeInsets.only(
+                                      left: 36.0,
+                                      right: 30.0,
+                                      top: 13,
+                                      bottom: 15.0,
+                                    ),
+                                    child: RichText(
+                                      text: TextSpan(children: <TextSpan>[
+                                        TextSpan(
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 15),
+                                            text: 'Donot have an account?  '),
+                                        TextSpan(
+                                          text: 'Sign up',
+                                          style: TextStyle(
+                                            color:
+                                                Color.fromARGB(255, 224, 75, 1),
+                                            fontSize: 15,
+                                          ),
+                                          recognizer: TapGestureRecognizer()
+                                            ..onTap = () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          MySignUp()));
+                                            }
+                                        ),
+                                      ]),
+                                    )),
 
 
                                 )
-                            ]
-                        ),
-                      ),
-                   ],
+
+                              ],
+                            )
+                          )
+                ),
+                ]
+                ),
+                ),
+                ],
            ),
           );
   }
