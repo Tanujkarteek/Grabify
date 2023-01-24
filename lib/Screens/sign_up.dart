@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grabify/Models/frostedglass.dart';
+import 'package:grabify/Screens/password_page.dart';
 import 'package:grabify/Screens/welcome.dart';
 import '../Models/hero_logo.dart';
 import '../Models/vectorasset.dart';
@@ -178,8 +179,7 @@ class _MySignUpState extends State<MySignUp> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) =>
-                                                  MySignUp()));
+                                              builder: (context) => MyPssd()));
                                     },
                                     style: ButtonStyle(
                                       backgroundColor:
@@ -216,14 +216,15 @@ class _MySignUpState extends State<MySignUp> {
                                   ),
                                 ),
                                 Padding(
-                                    padding: const EdgeInsets.only(
-                                      left: 30.0,
-                                      right: 30.0,
-                                      top: 5.0,
-                                      bottom: 10.0,
-                                    ),
-                                    child: RichText(
-                                      text: TextSpan(children: <TextSpan>[
+                                  padding: const EdgeInsets.only(
+                                    left: 30.0,
+                                    right: 30.0,
+                                    top: 5.0,
+                                    bottom: 10.0,
+                                  ),
+                                  child: RichText(
+                                    text: TextSpan(
+                                      children: <TextSpan>[
                                         TextSpan(
                                             style: TextStyle(
                                                 color: Colors.white,
@@ -239,14 +240,17 @@ class _MySignUpState extends State<MySignUp> {
                                           recognizer: TapGestureRecognizer()
                                             ..onTap = () {
                                               Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          WelcomePage()));
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        WelcomePage()),
+                                              );
                                             },
                                         ),
-                                      ]),
-                                    )),
+                                      ],
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
