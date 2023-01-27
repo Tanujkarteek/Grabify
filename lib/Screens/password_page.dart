@@ -3,12 +3,12 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:grabify/Screens/home.dart';
 import 'package:grabify/Screens/sign_in.dart';
-import 'package:grabify/Screens/welcome.dart';
 
-import '../Models/frostedglass.dart';
-import '../Models/hero_logo.dart';
-import '../Models/vectorasset.dart';
+import '../Components/frostedglass.dart';
+import '../Components/hero_logo.dart';
+import '../Components/vectorasset.dart';
 
 class MyPssd extends StatefulWidget {
   const MyPssd({super.key});
@@ -18,9 +18,10 @@ class MyPssd extends StatefulWidget {
 }
 
 class _MyPssdState extends State<MyPssd> {
-  late String _password;
+  TextEditingController _password = TextEditingController();
+  TextEditingController _confirmPassword = TextEditingController();
 
-  final _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +80,7 @@ class _MyPssdState extends State<MyPssd> {
                                     ),
                                     child: Container(
                                       child: TextFormField(
+                                        controller: _password,
                                         style: TextStyle(color: Colors.white),
                                         textDirection: TextDirection.ltr,
                                         textAlign: TextAlign.center,
@@ -99,7 +101,6 @@ class _MyPssdState extends State<MyPssd> {
                                           hintText: 'Password',
                                         ),
                                         obscureText: true,
-                                        //if a value is entred then validate it if it is greater that 8 charecter
                                         validator: (value) {
                                           if (value!.isEmpty) {
                                             return 'Please enter a password';
@@ -109,7 +110,6 @@ class _MyPssdState extends State<MyPssd> {
                                           }
                                           return null;
                                         },
-                                        onSaved: (value) => _password = value!,
                                       ),
                                     ),
                                   ),
@@ -122,6 +122,7 @@ class _MyPssdState extends State<MyPssd> {
                                     ),
                                     child: Container(
                                       child: TextFormField(
+                                        controller: _confirmPassword,
                                         style: TextStyle(color: Colors.white),
                                         textDirection: TextDirection.ltr,
                                         textAlign: TextAlign.center,
@@ -142,12 +143,12 @@ class _MyPssdState extends State<MyPssd> {
                                           hintText: 'Confirm Password',
                                         ),
                                         obscureText: true,
-                                        //if a value is entred then validate it is equal to the password
                                         validator: (value) {
                                           if (value!.isEmpty) {
                                             return 'Please re-enter the password';
                                           }
-                                          if (value != _password) {
+                                          if (_password.text !=
+                                              _confirmPassword.text) {
                                             return 'Password does not match';
                                           }
                                           return null;
@@ -174,7 +175,7 @@ class _MyPssdState extends State<MyPssd> {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      WelcomePage()));
+                                                      MyHome()));
                                         }
                                       },
                                       style: ButtonStyle(
