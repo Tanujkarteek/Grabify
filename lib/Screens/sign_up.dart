@@ -3,12 +3,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grabify/Models/frostedglass.dart';
+import 'package:grabify/Components/frostedglass.dart';
 import 'package:grabify/Screens/password_page.dart';
 import 'package:grabify/Screens/sign_in.dart';
-import 'package:grabify/Screens/welcome.dart';
-import '../Models/hero_logo.dart';
-import '../Models/vectorasset.dart';
+import '../Components/hero_logo.dart';
+import '../Components/vectorasset.dart';
 
 class MySignUp extends StatefulWidget {
   const MySignUp({super.key});

@@ -2,10 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../Models/hero_logo.dart';
-import '../Models/vectorasset.dart';
+import '../Components/hero_logo.dart';
+import '../Components/vectorasset.dart';
 import 'sign_up.dart';
-
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
