@@ -11,9 +11,14 @@ void main() {
   runApp(const Grabify());
 }
 
-class Grabify extends StatelessWidget {
+class Grabify extends StatefulWidget {
   const Grabify({Key? key}) : super(key: key);
 
+  @override
+  State<Grabify> createState() => _GrabifyState();
+}
+
+class _GrabifyState extends State<Grabify> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(

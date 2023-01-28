@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 //import 'package:grabify/Components/footer.dart';
 import 'package:grabify/Components/iconasset.dart';
 import 'package:grabify/Models/cart_model.dart';
@@ -125,10 +126,21 @@ class _MyHomeState extends State<MyHome> {
                                         value.shopItems[index][2].toString(),
                                     itemDescription:
                                         value.shopItems[index][3].toString(),
-                                    onPressed: () => Provider.of<Cartmodel>(
-                                            context,
-                                            listen: false)
-                                        .addItemToCart(index),
+                                    onPressed: () {
+                                      Provider.of<Cartmodel>(context,
+                                              listen: false)
+                                          .addItemToCart(index);
+                                      Fluttertoast.showToast(
+                                        msg: 'Item added to cart',
+                                        toastLength: Toast.LENGTH_SHORT,
+                                        gravity: ToastGravity.BOTTOM,
+                                        timeInSecForIosWeb: 1,
+                                        backgroundColor:
+                                            Color.fromRGBO(224, 77, 1, 1),
+                                        textColor: Colors.white,
+                                        fontSize: 16.0,
+                                      );
+                                    },
                                   );
                                 },
                               );
