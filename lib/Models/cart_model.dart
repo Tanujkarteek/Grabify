@@ -7,25 +7,25 @@ class Cartmodel extends ChangeNotifier {
       "Smoodh",
       "https://res.cloudinary.com/dlg7afigb/image/upload/v1674783709/Grabify/smoodh_hazelnut_yptkng.jpg",
       "10",
-      "Hazelnut"
+      "Hazelnut",
     ],
     [
       "Smoodh",
       "https://res.cloudinary.com/dlg7afigb/image/upload/v1674783718/Grabify/smoodh_chocolate_oqijlf.jpg",
       "10",
-      "Chocolate"
+      "Chocolate",
     ],
     [
       "Smoodh",
       "https://res.cloudinary.com/dlg7afigb/image/upload/v1674783713/Grabify/smoodh_caramel_oux3vi.jpg",
       "10",
-      "Caramel"
+      "Caramel",
     ],
     [
       "Smoodh",
       "https://res.cloudinary.com/dlg7afigb/image/upload/v1674783707/Grabify/smoodh_coffee_dcpshd.jpg",
       "10",
-      "Coffee Frappe"
+      "Coffee Frappe",
     ],
   ];
 

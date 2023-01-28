@@ -11,15 +11,20 @@ import '../Components/hero_logo.dart';
 import '../Components/vectorasset.dart';
 
 class MyPssd extends StatefulWidget {
-  const MyPssd({super.key});
+  const MyPssd({
+    super.key,
+    required String name,
+    required String roll,
+    required String phone,
+  });
 
   @override
   State<MyPssd> createState() => _MyPssdState();
 }
 
 class _MyPssdState extends State<MyPssd> {
-  TextEditingController _password = TextEditingController();
-  TextEditingController _confirmPassword = TextEditingController();
+  final TextEditingController _password = TextEditingController();
+  final TextEditingController _confirmPassword = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -171,7 +176,7 @@ class _MyPssdState extends State<MyPssd> {
 
                                         //if the form is valid then go to the next page
                                         if (_formKey.currentState!.validate()) {
-                                          Navigator.push(
+                                          Navigator.pushReplacement(
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>

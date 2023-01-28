@@ -38,7 +38,7 @@ class WelcomePage extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       //navigate to sign_up.dart
-                      Navigator.push(context,
+                      Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) => MySignUp()));
                     },
                     style: ButtonStyle(
