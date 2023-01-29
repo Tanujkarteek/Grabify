@@ -3,10 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 //import 'package:grabify/Components/footer.dart';
 import 'package:grabify/Components/iconasset.dart';
 import 'package:grabify/Models/cart_model.dart';
 import 'package:grabify/Screens/cart_page.dart';
+import 'package:grabify/Screens/welcome.dart';
 import 'package:provider/provider.dart';
 
 import '../Components/home_item_tile.dart';
@@ -19,6 +22,8 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
+  final userdata = GetStorage();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,7 +79,7 @@ class _MyHomeState extends State<MyHome> {
                                       ),
                                     ),
                                     TextSpan(
-                                      text: 'Tanuj',
+                                      text: "${userdata.read('name')}",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 25,
@@ -94,10 +99,43 @@ class _MyHomeState extends State<MyHome> {
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.04,
                               ),
-                              CircleAvatar(
-                                radius: 20,
-                                backgroundImage:
-                                    AssetImage('assets/images/flutter.png'),
+                              PopupMenuButton(
+                                itemBuilder: (context) => [
+                                  PopupMenuItem(
+                                    child: TextButton(
+                                      onPressed: () {
+                                        userdata.write('isLoggedIn', false);
+                                        userdata.remove('name');
+                                        userdata.remove('roll');
+                                        userdata.remove('phone');
+                                        userdata.remove('password');
+                                        Fluttertoast.showToast(
+                                            msg: 'Logged Out Successfully',
+                                            toastLength: Toast.LENGTH_SHORT,
+                                            gravity: ToastGravity.BOTTOM,
+                                            timeInSecForIosWeb: 1,
+                                            backgroundColor: Colors.black,
+                                            textColor: Colors.white,
+                                            fontSize: 16.0);
+                                        Get.offAll(WelcomePage());
+                                      },
+                                      child: Text(
+                                        'Logout',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontFamily: 'Inter',
+                                          fontWeight: FontWeight.w800,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                                child: CircleAvatar(
+                                  radius: 20,
+                                  backgroundImage:
+                                      AssetImage('assets/images/flutter.png'),
+                                ),
                               ),
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.05,
@@ -116,7 +154,7 @@ class _MyHomeState extends State<MyHome> {
                                 gridDelegate:
                                     const SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 2,
-                                        childAspectRatio: 150 / 235),
+                                        childAspectRatio: 150 / 260),
                                 itemBuilder: (context, index) {
                                   return HomeItemTile(
                                     itemName:
@@ -150,7 +188,6 @@ class _MyHomeState extends State<MyHome> {
                       ],
                     ),
                   ),
-                  //MyFooter(),
                 ],
               ),
             ),
