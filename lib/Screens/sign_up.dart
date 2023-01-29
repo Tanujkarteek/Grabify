@@ -72,11 +72,11 @@ class _MySignUpState extends State<MySignUp> {
                               child: Logo(),
                             )),
                         SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.15),
+                            height: MediaQuery.of(context).size.height * 0.12),
                         //Take inputs of name and roll number and phonenumber
                         FrostedGlassBox(
                           theWidth: MediaQuery.of(context).size.width * 0.85,
-                          theHeight: MediaQuery.of(context).size.height * 0.45,
+                          theHeight: MediaQuery.of(context).size.height * 0.50,
                           theChild: Container(
                             height: MediaQuery.of(context).size.height * 0.04,
                             child: Form(

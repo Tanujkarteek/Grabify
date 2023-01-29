@@ -71,16 +71,17 @@ class HomeItemTile extends StatelessWidget {
               //     bottom: BorderSide(color: Colors.white, width: 2),
               //   ),
               // ),
-              width: MediaQuery.of(context).size.width * 0.35,
+              width: MediaQuery.of(context).size.width * 0.40,
               child: Row(
                 children: [
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         itemName,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 15,
+                          fontSize: 13,
                           fontFamily: 'Inter',
                           fontWeight: FontWeight.w800,
                         ),
@@ -104,7 +105,7 @@ class HomeItemTile extends StatelessWidget {
                     textAlign: TextAlign.right,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 15,
+                      fontSize: 13,
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w800,
                     ),
@@ -135,7 +136,7 @@ class HomeItemTile extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
         ],
       ),
     );

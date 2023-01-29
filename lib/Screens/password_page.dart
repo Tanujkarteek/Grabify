@@ -5,18 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grabify/Screens/home.dart';
 import 'package:grabify/Screens/sign_in.dart';
-
+import 'package:get_storage/get_storage.dart';
 import '../Components/frostedglass.dart';
 import '../Components/hero_logo.dart';
 import '../Components/vectorasset.dart';
 
 class MyPssd extends StatefulWidget {
-  const MyPssd({
-    super.key,
-    required String name,
-    required String roll,
-    required String phone,
-  });
+  final String name;
+  final String roll;
+  final String phone;
+  const MyPssd(
+      {Key? key, required this.name, required this.roll, required this.phone})
+      : super(key: key);
 
   @override
   State<MyPssd> createState() => _MyPssdState();
@@ -27,6 +27,8 @@ class _MyPssdState extends State<MyPssd> {
   final TextEditingController _confirmPassword = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  final userdata = GetStorage();
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +65,7 @@ class _MyPssdState extends State<MyPssd> {
                               child: Logo(),
                             )),
                         SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.15),
+                            height: MediaQuery.of(context).size.height * 0.12),
                         //Take inputs of name and roll number and phonenumber
                         FrostedGlassBox(
                           theWidth: MediaQuery.of(context).size.width * 0.85,
@@ -181,6 +183,14 @@ class _MyPssdState extends State<MyPssd> {
                                               MaterialPageRoute(
                                                   builder: (context) =>
                                                       MyHome()));
+                                          userdata.write('isLoggedIn', true);
+                                          print(userdata.read('isLoggedIn'));
+                                          userdata.write('password',
+                                              _password.text.toString());
+                                          userdata.write('name', widget.name);
+                                          userdata.write('rollno', widget.roll);
+                                          userdata.write(
+                                              'phonenumber', widget.phone);
                                         }
                                       },
                                       style: ButtonStyle(
