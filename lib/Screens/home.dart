@@ -91,10 +91,19 @@ class _MyHomeState extends State<MyHome> {
                                 ),
                               ),
                               Spacer(),
-                              SvgPicture.asset(
-                                searchicon,
-                                height: 40,
-                                width: 40,
+                              GestureDetector(
+                                onTap: () {
+                                  Fluttertoast.showToast(
+                                    toastLength: Toast.LENGTH_SHORT,
+                                    gravity: ToastGravity.BOTTOM,
+                                    msg: "App is still under works",
+                                  );
+                                },
+                                child: SvgPicture.asset(
+                                  searchicon,
+                                  height: 40,
+                                  width: 40,
+                                ),
                               ),
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.04,
@@ -122,10 +131,10 @@ class _MyHomeState extends State<MyHome> {
                                       child: Text(
                                         'Logout',
                                         style: TextStyle(
-                                          color: Colors.white,
+                                          color: Colors.black,
                                           fontSize: 20,
                                           fontFamily: 'Inter',
-                                          fontWeight: FontWeight.w800,
+                                          fontWeight: FontWeight.w600,
                                         ),
                                       ),
                                     ),
