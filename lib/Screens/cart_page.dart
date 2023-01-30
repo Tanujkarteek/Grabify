@@ -61,9 +61,12 @@ class _CartPageState extends State<CartPage> {
                               color: Color.fromRGBO(255, 119, 0, 1),
                               borderRadius: BorderRadius.circular(8)),
                           child: ListTile(
-                            leading: CachedNetworkImage(
-                              imageUrl: value.cartItems[index][1],
-                              height: 80,
+                            leading: Container(
+                              child: CachedNetworkImage(
+                                imageUrl: value.cartItems[index][1],
+                                height: 80,
+                                width: 67.5,
+                              ),
                             ),
                             title: Text(
                               value.cartItems[index][0] +
