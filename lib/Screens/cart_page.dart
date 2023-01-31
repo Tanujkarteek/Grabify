@@ -2,6 +2,7 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:grabify/Components/cart_item_tile.dart';
 import 'package:grabify/Models/cart_model.dart';
 import 'package:provider/provider.dart';
 // import 'package:flutter/src/widgets/container.dart';
@@ -54,44 +55,84 @@ class _CartPageState extends State<CartPage> {
                     itemCount: value.cartItems.length,
                     padding: EdgeInsets.all(12),
                     itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Color.fromRGBO(255, 119, 0, 1),
-                              borderRadius: BorderRadius.circular(8)),
-                          child: ListTile(
-                            leading: Container(
-                              child: CachedNetworkImage(
-                                imageUrl: value.cartItems[index][1],
-                                height: 80,
-                                width: 67.5,
-                              ),
-                            ),
-                            title: Text(
-                              value.cartItems[index][0] +
-                                  ' ' +
-                                  value.cartItems[index][3],
-                              style: const TextStyle(
-                                  fontSize: 18, color: Colors.white),
-                            ),
-                            subtitle: Text(
-                              "₹" + value.cartItems[index][2],
-                              style: const TextStyle(
-                                  fontSize: 12, color: Colors.white),
-                            ),
-                            trailing: IconButton(
-                              icon: const Icon(
-                                Icons.delete,
-                                color: Colors.white,
-                              ),
-                              onPressed: () =>
-                                  Provider.of<Cartmodel>(context, listen: false)
-                                      .removeFromCart(index),
-                            ),
-                          ),
-                        ),
+                      return CartItemTile(
+                        itemName: value.cartItems[index][0].toString(),
+                        itemImagePath: value.cartItems[index][1],
+                        itemPrice: value.cartItems[index][2].toString(),
+                        itemDescription: value.cartItems[index][3].toString(),
+                        itemQuantity: value.cartItems[index][4].toString(),
+                        onPressed: () {
+                          Provider.of<Cartmodel>(context, listen: false)
+                              .addSingleItemToCart(index);
+                        },
+                        onPressed1: () {
+                          Provider.of<Cartmodel>(context, listen: false)
+                              .removeSingleItemFromCart(index);
+                        },
+                        onPressed2: () {
+                          Provider.of<Cartmodel>(context, listen: false)
+                              .removeFromCart(index);
+                        },
                       );
+                      // Padding(
+                      //   padding: const EdgeInsets.all(12.0),
+                      //   child: Container(
+                      //     decoration: BoxDecoration(
+                      //         color: Color.fromRGBO(255, 119, 0, 1),
+                      //         borderRadius: BorderRadius.circular(8)),
+                      //     child: ListTile(
+                      //       leading: Container(
+                      //         child: CachedNetworkImage(
+                      //           imageUrl: value.cartItems[index][1],
+                      //           height: 80,
+                      //           width: 67.5,
+                      //         ),
+                      //       ),
+                      //       title: Text(
+                      //         value.cartItems[index][0] +
+                      //             ' ' +
+                      //             value.cartItems[index][3],
+                      //         style: const TextStyle(
+                      //             fontSize: 18, color: Colors.white),
+                      //       ),
+                      //       subtitle: Text(
+                      //         "₹" + value.cartItems[index][2],
+                      //         style: const TextStyle(
+                      //             fontSize: 12, color: Colors.white),
+                      //       ),
+                      //       trailing: Column(
+                      //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      //         children: [
+                      //           IconButton(
+                      //             icon: const Icon(
+                      //               Icons.add,
+                      //               color: Colors.white,
+                      //             ),
+                      //             onPressed: () => Provider.of<Cartmodel>(
+                      //                     context,
+                      //                     listen: false)
+                      //                 .addItemToCart(index),
+                      //           ),
+                      //           Text(
+                      //             value.cartItems[index][4],
+                      //             style: const TextStyle(
+                      //                 fontSize: 20, color: Colors.white),
+                      //           ),
+                      //         ],
+                      //       ),
+                      //       // IconButton(
+                      //       //   icon: const Icon(
+                      //       //     Icons.delete,
+                      //       //     color: Colors.white,
+                      //       //   ),
+                      //       //   onPressed: () => Provider.of<Cartmodel>(
+                      //       //           context,
+                      //       //           listen: false)
+                      //       //       .removeFromCart(index),
+                      //       // ),
+                      //     ),
+                      //   ),
+                      // );
                     },
                   ),
                 ),

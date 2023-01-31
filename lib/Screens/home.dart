@@ -9,6 +9,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:grabify/Components/iconasset.dart';
 import 'package:grabify/Models/cart_model.dart';
 import 'package:grabify/Screens/cart_page.dart';
+import 'package:grabify/Screens/favorite_page.dart';
 import 'package:grabify/Screens/welcome.dart';
 import 'package:provider/provider.dart';
 
@@ -23,6 +24,8 @@ class MyHome extends StatefulWidget {
 
 class _MyHomeState extends State<MyHome> {
   final userdata = GetStorage();
+  final heartColor = Colors.white;
+  final likedHeartColor = Color.fromRGBO(224, 77, 1, 1);
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +114,7 @@ class _MyHomeState extends State<MyHome> {
                               PopupMenuButton(
                                 itemBuilder: (context) => [
                                   PopupMenuItem(
-                                    child: TextButton(
+                                    child: MaterialButton(
                                       onPressed: () {
                                         userdata.write('isLoggedIn', false);
                                         userdata.remove('name');
@@ -139,11 +142,33 @@ class _MyHomeState extends State<MyHome> {
                                       ),
                                     ),
                                   ),
+                                  PopupMenuItem(
+                                    child: MaterialButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const LikedPage(),
+                                          ),
+                                        );
+                                      },
+                                      child: Text(
+                                        'Liked',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20,
+                                          fontFamily: 'Inter',
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ],
                                 child: CircleAvatar(
                                   radius: 20,
-                                  backgroundImage:
-                                      AssetImage('assets/images/flutter.png'),
+                                  backgroundImage: AssetImage(
+                                      'assets/images/Grabify_Logo_final.png'),
                                 ),
                               ),
                               SizedBox(
@@ -179,6 +204,21 @@ class _MyHomeState extends State<MyHome> {
                                           .addItemToCart(index);
                                       Fluttertoast.showToast(
                                         msg: 'Item added to cart',
+                                        toastLength: Toast.LENGTH_SHORT,
+                                        gravity: ToastGravity.BOTTOM,
+                                        timeInSecForIosWeb: 1,
+                                        backgroundColor:
+                                            Color.fromRGBO(224, 77, 1, 1),
+                                        textColor: Colors.white,
+                                        fontSize: 16.0,
+                                      );
+                                    },
+                                    onPressedLike: () {
+                                      Provider.of<Cartmodel>(context,
+                                              listen: false)
+                                          .addLikedItem(index);
+                                      Fluttertoast.showToast(
+                                        msg: 'Item added to Liked Items',
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
                                         timeInSecForIosWeb: 1,
